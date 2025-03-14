@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "ap.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -55,7 +55,6 @@ static void MX_ICACHE_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
 /* USER CODE END 0 */
 
 /**
@@ -89,6 +88,10 @@ int main(void)
   MX_GPIO_Init();
   MX_ICACHE_Init();
   /* USER CODE BEGIN 2 */
+  
+  hwInit();
+  apInit();
+  apMain();
 
   /* USER CODE END 2 */
 

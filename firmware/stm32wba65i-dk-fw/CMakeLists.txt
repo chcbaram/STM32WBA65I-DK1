@@ -40,6 +40,13 @@ add_executable(${CMAKE_PROJECT_NAME})
 # Add STM32CubeMX generated sources
 add_subdirectory(cmake/stm32cubemx)
 
+file(GLOB SRC_FILES CONFIGURE_DEPENDS
+  App/ap/*.c
+  App/common/src/*.c
+  App/hw/*.c
+  App/hw/src/*.c  
+)
+
 # Link directories setup
 target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user defined library search paths
@@ -48,11 +55,17 @@ target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
 # Add sources to executable
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user sources here
+    ${SRC_FILES}
 )
 
 # Add include paths
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user defined include paths
+    App/ap
+    App/common
+    App/common/include
+    App/hw
+    App/hw/include   
 )
 
 # Add project symbols (macros)
