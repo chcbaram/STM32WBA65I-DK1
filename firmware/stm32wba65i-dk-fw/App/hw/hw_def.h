@@ -6,6 +6,9 @@
 #include "def.h"
 
 
+#define _USE_HW_LED
+#define      HW_LED_MAX_CH          2
+
 
 #define logPrintf printf
 
