@@ -4,6 +4,7 @@
 
 #ifdef _USE_HW_SSD1315
 #include "spi.h"
+#include "gpio.h"
 
 #define SSD1315_WIDTH       HW_LCD_WIDTH
 #define SSD1315_HEIGHT      HW_LCD_HEIGHT
@@ -193,10 +194,6 @@ bool ssd1315UpdateDraw(void)
     ssd1315WriteCmd(0x00);
     ssd1315WriteCmd(0x10);
 
-    // if (i2cWriteBytes(i2c_ch, i2c_dev, 0x40, &ssd1315_buffer[SSD1315_WIDTH * i], SSD1315_WIDTH, 100) == false)
-    // {
-    //   return false;
-    // }
     gpioPinWrite(OLED_DC, _DEF_HIGH);
     gpioPinWrite(OLED_CS, _DEF_LOW);
     ret = spiTransfer(spi_ch, &ssd1315_buffer[SSD1315_WIDTH * i], NULL, SSD1315_WIDTH, 100);
