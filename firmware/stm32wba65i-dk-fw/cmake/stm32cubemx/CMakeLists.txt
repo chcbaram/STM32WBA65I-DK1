@@ -43,6 +43,8 @@ set(STM32_Drivers_Src
     ${CMAKE_SOURCE_DIR}/Drivers/STM32WBAxx_HAL_Driver/Src/stm32wbaxx_hal_pwr.c
     ${CMAKE_SOURCE_DIR}/Drivers/STM32WBAxx_HAL_Driver/Src/stm32wbaxx_hal_pwr_ex.c
     ${CMAKE_SOURCE_DIR}/Drivers/STM32WBAxx_HAL_Driver/Src/stm32wbaxx_hal_icache.c
+    ${CMAKE_SOURCE_DIR}/Drivers/STM32WBAxx_HAL_Driver/Src/stm32wbaxx_hal_uart.c
+    ${CMAKE_SOURCE_DIR}/Drivers/STM32WBAxx_HAL_Driver/Src/stm32wbaxx_hal_uart_ex.c
 )
 
 # Drivers Midllewares
