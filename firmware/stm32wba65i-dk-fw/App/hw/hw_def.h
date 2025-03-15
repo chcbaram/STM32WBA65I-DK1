@@ -25,6 +25,19 @@
 #define      HW_USB_LOG             0
 #define      HW_USB_CDC             1
 
+#define _USE_HW_GPIO
+#define      HW_GPIO_MAX_CH         GPIO_PIN_MAX
+
+
+
+typedef enum
+{
+  OLED_CS,
+  OLED_RST,
+  OLED_DC,
+  GPIO_PIN_MAX,
+} GpioPinName_t;
+
 
 #define logPrintf printf
 

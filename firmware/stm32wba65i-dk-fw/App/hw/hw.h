@@ -12,6 +12,8 @@ extern "C" {
 #include "cli.h"
 #include "cdc.h"
 #include "usb.h"
+#include "gpio.h"
+
 
 bool hwInit(void);
 

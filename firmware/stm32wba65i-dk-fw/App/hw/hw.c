@@ -7,6 +7,7 @@ bool hwInit(void)
 {
   cliInit();
   ledInit();
+  gpioInit();
   uartInit();
   for (int i=0; i<HW_UART_MAX_CH; i++)
   {
