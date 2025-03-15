@@ -19,7 +19,8 @@ bool hwInit(void)
   logPrintf("\n");
 
   spiInit();
-
+  spiFlashInit();
+  
   cdcInit();
   usbInit();
   usbBegin(USB_CDC_MODE);

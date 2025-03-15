@@ -31,6 +31,8 @@
 #define _USE_HW_SPI
 #define      HW_SPI_MAX_CH          1
 
+#define _USE_HW_SPI_FLASH
+#define      HW_SPI_FLASH_ADDR      0x91000000
 
 
 typedef enum

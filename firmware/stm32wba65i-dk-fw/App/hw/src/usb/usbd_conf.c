@@ -245,7 +245,7 @@ void HAL_PCD_SuspendCallback(PCD_HandleTypeDef *hpcd)
 
   is_connected = false;
   is_suspended = true;
-  logPrintf("[  ] USB Suspend\n");
+  logPrintf("\n[  ] USB Suspend\n");
   /* USER CODE END 2 */
 }
 
