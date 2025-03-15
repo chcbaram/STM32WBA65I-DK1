@@ -45,6 +45,11 @@ file(GLOB SRC_FILES CONFIGURE_DEPENDS
   App/common/src/*.c
   App/hw/*.c
   App/hw/src/*.c  
+
+  # USB
+  App/hw/src/usb/*.c
+  App/hw/src/usb/usb_cdc/*.c
+  App/lib/ST/STM32_USB_Device_Library/Core/Src/*.c
 )
 
 # Link directories setup
@@ -66,6 +71,11 @@ target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
     App/common/include
     App/hw
     App/hw/include   
+
+    # USB
+    App/hw/src/usb
+    App/hw/src/usb/usb_cdc
+    App/lib/ST/STM32_USB_Device_Library/Core/Inc
 )
 
 # Add project symbols (macros)

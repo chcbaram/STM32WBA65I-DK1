@@ -20,6 +20,11 @@
 #define      HW_CLI_LINE_HIS_MAX    8
 #define      HW_CLI_LINE_BUF_MAX    64
 
+#define _USE_HW_USB
+#define _USE_HW_CDC
+#define      HW_USB_LOG             0
+#define      HW_USB_CDC             1
+
 
 #define logPrintf printf
 

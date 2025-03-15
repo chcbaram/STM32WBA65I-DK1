@@ -17,6 +17,10 @@ bool hwInit(void)
   logPrintf("Booting..Clock\t: %d Mhz\r\n", (int)HAL_RCC_GetSysClockFreq()/1000000);
   logPrintf("\n");
 
+  cdcInit();
+  usbInit();
+  usbBegin(USB_CDC_MODE);
+
   return true;
 }
 
