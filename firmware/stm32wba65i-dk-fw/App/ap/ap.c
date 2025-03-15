@@ -4,6 +4,8 @@
 
 void apInit(void)
 {
+  cliOpen(HW_UART_CH_CLI, 115200);
+  cliLogo();
 }
 
 
@@ -21,9 +23,6 @@ void apMain(void)
       ledToggle(_DEF_LED1);
     }
 
-    if (uartAvailable(_DEF_UART1) > 0)
-    {
-      uartPrintf(_DEF_UART1, "rx : 0x%02X\n", uartRead(_DEF_UART1));
-    }    
+    cliMain();
   }
 } 
