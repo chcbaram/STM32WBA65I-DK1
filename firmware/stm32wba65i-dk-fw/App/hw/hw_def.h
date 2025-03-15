@@ -34,6 +34,11 @@
 #define _USE_HW_SPI_FLASH
 #define      HW_SPI_FLASH_ADDR      0x91000000
 
+#define _USE_HW_LCD
+#define _USE_HW_SSD1315
+#define      HW_LCD_WIDTH           128
+#define      HW_LCD_HEIGHT          64
+
 
 typedef enum
 {

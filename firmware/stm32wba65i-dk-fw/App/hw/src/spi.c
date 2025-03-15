@@ -82,6 +82,11 @@ bool spiBegin(uint8_t ch)
   return ret;
 }
 
+bool spiIsBegin(uint8_t ch)
+{
+  return spi_tbl[ch].is_open;
+}
+
 void spiSetDataMode(uint8_t ch, uint8_t dataMode)
 {
   spi_t  *p_spi = &spi_tbl[ch];

@@ -20,6 +20,7 @@ extern "C" {
 
 bool spiInit(void);
 bool spiBegin(uint8_t ch);
+bool spiIsBegin(uint8_t ch);
 void spiSetBitOrder(uint8_t ch, uint8_t bitOrder);
 void spiSetClockDivider(uint8_t ch, uint32_t clockDiv);
 void spiSetDataMode(uint8_t ch, uint8_t dataMode);

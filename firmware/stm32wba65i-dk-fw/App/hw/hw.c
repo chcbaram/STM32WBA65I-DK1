@@ -20,7 +20,9 @@ bool hwInit(void)
 
   spiInit();
   spiFlashInit();
-  
+  lcdInit();
+  lcdSetFps(20);
+
   cdcInit();
   usbInit();
   usbBegin(USB_CDC_MODE);

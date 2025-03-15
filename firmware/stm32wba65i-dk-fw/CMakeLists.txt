@@ -50,6 +50,8 @@ file(GLOB SRC_FILES CONFIGURE_DEPENDS
   App/hw/src/usb/*.c
   App/hw/src/usb/usb_cdc/*.c
   App/lib/ST/STM32_USB_Device_Library/Core/Src/*.c
+
+  App/hw/src/lcd/*.c   
 )
 
 # Link directories setup
