@@ -67,6 +67,8 @@ void Error_Handler(void);
 #define OLED_CS_GPIO_Port GPIOE
 #define OLED_DC_Pin GPIO_PIN_0
 #define OLED_DC_GPIO_Port GPIOE
+#define SPI_FLASH_NSS_Pin GPIO_PIN_3
+#define SPI_FLASH_NSS_GPIO_Port GPIOH
 
 /* USER CODE BEGIN Private defines */
 

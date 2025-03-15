@@ -13,6 +13,7 @@ extern "C" {
 #include "cdc.h"
 #include "usb.h"
 #include "gpio.h"
+#include "spi.h"
 
 
 bool hwInit(void);

@@ -28,6 +28,9 @@
 #define _USE_HW_GPIO
 #define      HW_GPIO_MAX_CH         GPIO_PIN_MAX
 
+#define _USE_HW_SPI
+#define      HW_SPI_MAX_CH          1
+
 
 
 typedef enum
@@ -35,6 +38,7 @@ typedef enum
   OLED_CS,
   OLED_RST,
   OLED_DC,
+  SPI_FLASH_NSS,
   GPIO_PIN_MAX,
 } GpioPinName_t;
 
