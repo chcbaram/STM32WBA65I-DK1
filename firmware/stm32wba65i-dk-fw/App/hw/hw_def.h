@@ -43,6 +43,9 @@
 #define _USE_HW_ADC                 
 #define      HW_ADC_MAX_CH          ADC_PIN_MAX
 
+#define _USE_HW_BUTTON
+#define      HW_BUTTON_MAX_CH       BUTTON_PIN_MAX
+
 
 typedef enum
 {
@@ -58,6 +61,16 @@ typedef enum
   BUTTON_ADC,
   ADC_PIN_MAX
 } AdcPinName_t;
+
+typedef enum
+{
+  BUTTON_UP,
+  BUTTON_DOWN,
+  BUTTON_LEFT,
+  BUTTON_RIGHT,
+  BUTTON_ENTER,
+  BUTTON_PIN_MAX
+} ButtonPinName_t;
 
 
 #define logPrintf printf
