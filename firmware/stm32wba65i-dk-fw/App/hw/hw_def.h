@@ -40,6 +40,9 @@
 #define      HW_LCD_WIDTH           128
 #define      HW_LCD_HEIGHT          64
 
+#define _USE_HW_ADC                 
+#define      HW_ADC_MAX_CH          ADC_PIN_MAX
+
 
 typedef enum
 {
@@ -49,6 +52,12 @@ typedef enum
   SPI_FLASH_NSS,
   GPIO_PIN_MAX,
 } GpioPinName_t;
+
+typedef enum
+{
+  BUTTON_ADC,
+  ADC_PIN_MAX
+} AdcPinName_t;
 
 
 #define logPrintf printf
