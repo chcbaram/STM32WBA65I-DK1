@@ -19,6 +19,7 @@ bool hwInit(void)
   logPrintf("\n");
 
   adcInit();
+  buttonInit();
   spiInit();
   spiFlashInit();
   lcdInit();

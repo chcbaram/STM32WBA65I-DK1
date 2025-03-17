@@ -17,6 +17,8 @@ extern "C" {
 #include "spi_flash.h"
 #include "lcd.h"
 #include "adc.h"
+#include "button.h"
+
 
 bool hwInit(void);
 

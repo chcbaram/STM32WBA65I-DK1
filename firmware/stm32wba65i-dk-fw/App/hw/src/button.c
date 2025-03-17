@@ -133,10 +133,11 @@ void cliButton(cli_args_t *args)
       {
         cliPrintf("%d", buttonGetPressed(i));
       }
-      cliPrintf("\n");
+      cliPrintf("\r");
 
       delay(100);
     }
+    cliPrintf("\n");
 
     ret = true;
   }
