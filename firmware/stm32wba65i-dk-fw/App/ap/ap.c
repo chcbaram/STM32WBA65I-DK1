@@ -34,5 +34,10 @@ void apMain(void)
     }
 
     cliMain();
+
+    if (uartAvailable(HW_UART_CH_USB))
+    {
+      uartPrintf(HW_UART_CH_USB, "rx cdc : 0x%02X\n", uartRead(HW_UART_CH_USB));
+    }
   }
 } 

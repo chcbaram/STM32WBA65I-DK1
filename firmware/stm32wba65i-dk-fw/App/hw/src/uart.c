@@ -3,7 +3,9 @@
 
 #ifdef _USE_HW_UART
 #include "qbuffer.h"
-
+#if HW_USB_CDC == 1
+#include "cdc.h"
+#endif
 
 #define UART_RX_BUF_LENGTH      512
 
@@ -14,6 +16,7 @@
 typedef struct
 {
   bool     is_open;
+  bool     is_cdc;
   uint32_t baud;
 
   qbuffer_t q_rx;
@@ -45,6 +48,7 @@ bool uartInit(void)
     uart_tbl[i].is_open   = false;
     uart_tbl[i].baud      = 115200;
     uart_tbl[i].p_huart   = NULL;
+    uart_tbl[i].is_cdc    = false;
 
     qbufferCreate(&uart_tbl[i].q_rx, &uart_tbl[i].q_rx_buf[0], UART_RX_BUF_LENGTH);
   }
@@ -105,6 +109,12 @@ bool uartOpen(uint8_t ch, uint32_t baud)
       ret = uart_tbl[ch].is_open;
       break;
 
+    case _DEF_UART2:
+      uart_tbl[ch].baud    = baud;
+      uart_tbl[ch].is_open = true;
+      uart_tbl[ch].is_cdc  = true;
+      break;
+
     default:
       break;
   }
@@ -137,9 +147,17 @@ uint32_t uartAvailable(uint8_t ch)
   if (ch >= UART_MAX_CH)
     return false;
 
-  uart_tbl[ch].q_rx.in = uart_tbl[ch].q_rx.len - uart_tbl[ch].p_huart->hdmarx->Instance->CBR1;
-
-  ret = qbufferAvailable(&uart_tbl[ch].q_rx);
+  if (uart_tbl[ch].is_cdc)
+  {
+    #if HW_USB_CDC == 1
+    ret = cdcAvailable();
+    #endif
+  }
+  else
+  {
+    uart_tbl[ch].q_rx.in = uart_tbl[ch].q_rx.len - uart_tbl[ch].p_huart->hdmarx->Instance->CBR1;
+    ret = qbufferAvailable(&uart_tbl[ch].q_rx);
+  }
 
   return ret;
 }
@@ -167,7 +185,16 @@ uint8_t uartRead(uint8_t ch)
 {
   uint8_t ret = 0;
 
-  qbufferRead(&uart_tbl[ch].q_rx, &ret, 1);
+  if (uart_tbl[ch].is_cdc)
+  {
+    #if HW_USB_CDC == 1
+    ret = cdcRead();
+    #endif
+  }
+  else
+  {
+    qbufferRead(&uart_tbl[ch].q_rx, &ret, 1);
+  }
 
   return ret;
 }
@@ -179,10 +206,18 @@ uint32_t uartWrite(uint8_t ch, uint8_t *p_data, uint32_t length)
   if (ch >= UART_MAX_CH)
     return false;  
 
-
-  if (HAL_UART_Transmit(uart_tbl[ch].p_huart, p_data, length, 100) == HAL_OK)
+  if (uart_tbl[ch].is_cdc)
   {
-    ret = length;
+    #if HW_USB_CDC == 1
+    ret = cdcWrite(p_data, length);
+    #endif
+  }  
+  else
+  {
+    if (HAL_UART_Transmit(uart_tbl[ch].p_huart, p_data, length, 100) == HAL_OK)
+    {
+      ret = length;
+    }
   }
 
   return ret;
@@ -215,7 +250,5 @@ uint32_t uartGetBaud(uint8_t ch)
 
   return uart_tbl[ch].baud;
 }
-
-
 
 #endif
