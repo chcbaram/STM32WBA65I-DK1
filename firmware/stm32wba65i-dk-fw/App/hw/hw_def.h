@@ -6,6 +6,11 @@
 #include "def.h"
 
 
+#define _USE_HW_SAI
+#define _USE_HW_BUZZER
+#define _USE_HW_WM8904
+
+
 #define _USE_HW_LED
 #define      HW_LED_MAX_CH          2
 
@@ -48,6 +53,11 @@
 
 #define _USE_HW_I2C
 #define      HW_I2C_MAX_CH          1
+
+#define _USE_HW_MIXER
+#define      HW_MIXER_MAX_CH        4
+#define      HW_MIXER_MAX_BUF_LEN   (48*2*4*4) // 48Khz * Stereo * 4ms * 2
+
 
 
 typedef enum

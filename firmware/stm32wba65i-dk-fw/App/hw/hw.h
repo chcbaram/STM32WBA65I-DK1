@@ -19,6 +19,9 @@ extern "C" {
 #include "adc.h"
 #include "button.h"
 #include "i2c.h"
+#include "sai.h"
+#include "wm8904.h"
+
 
 bool hwInit(void);
 

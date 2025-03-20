@@ -23,6 +23,8 @@ bool hwInit(void)
   buttonInit();
   spiInit();
   spiFlashInit();
+  saiInit();
+  wm8904Init();
   lcdInit();
   lcdSetFps(20);
 
