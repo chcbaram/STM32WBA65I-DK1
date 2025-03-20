@@ -46,6 +46,9 @@
 #define _USE_HW_BUTTON
 #define      HW_BUTTON_MAX_CH       BUTTON_PIN_MAX
 
+#define _USE_HW_I2C
+#define      HW_I2C_MAX_CH          1
+
 
 typedef enum
 {

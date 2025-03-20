@@ -44,6 +44,8 @@ set(STM32_Drivers_Src
     ${CMAKE_SOURCE_DIR}/Drivers/STM32WBAxx_HAL_Driver/Src/stm32wbaxx_hal_exti.c
     ${CMAKE_SOURCE_DIR}/Drivers/STM32WBAxx_HAL_Driver/Src/stm32wbaxx_hal_pwr.c
     ${CMAKE_SOURCE_DIR}/Drivers/STM32WBAxx_HAL_Driver/Src/stm32wbaxx_hal_pwr_ex.c
+    ${CMAKE_SOURCE_DIR}/Drivers/STM32WBAxx_HAL_Driver/Src/stm32wbaxx_hal_i2c.c
+    ${CMAKE_SOURCE_DIR}/Drivers/STM32WBAxx_HAL_Driver/Src/stm32wbaxx_hal_i2c_ex.c
     ${CMAKE_SOURCE_DIR}/Drivers/STM32WBAxx_HAL_Driver/Src/stm32wbaxx_hal_icache.c
     ${CMAKE_SOURCE_DIR}/Drivers/STM32WBAxx_HAL_Driver/Src/stm32wbaxx_hal_spi.c
     ${CMAKE_SOURCE_DIR}/Drivers/STM32WBAxx_HAL_Driver/Src/stm32wbaxx_hal_spi_ex.c

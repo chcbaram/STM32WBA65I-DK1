@@ -18,7 +18,7 @@ extern "C" {
 #include "lcd.h"
 #include "adc.h"
 #include "button.h"
-
+#include "i2c.h"
 
 bool hwInit(void);
 
