@@ -59,12 +59,14 @@ bool wm8904InitReg(void)
 {
   bool ret = true;
   uint16_t reg_data;
+  uint32_t pre_time;
 
 
   // Reset
   //
   wm8904WriteReg(0x00, 0x0000); 
   delay(10);
+
 
   // Start-Up sequence
   //
@@ -74,11 +76,31 @@ bool wm8904InitReg(void)
   ret &= wm8904WriteReg(0x6F, 0x0100); 
   ret &= wm8904WriteReg(0x21, 0x0000); 
 
-  wm8904ReadReg(0x70, &reg_data);
-  logPrintf("0x70 : 0x%04X\n", reg_data);
-  delay(500);
-  wm8904ReadReg(0x70, &reg_data);
-  logPrintf("0x70 : 0x%04X\n", reg_data);
+  pre_time = millis();
+  while(1)
+  {
+    wm8904ReadReg(0x70, &reg_data);
+    if ((reg_data & 0x0001) == 0)
+    {
+      logPrintf("[  ] wm8904 Start-Up Done\n");
+      logPrintf("[  ]        %ldms\n", millis()-pre_time);
+      break;
+    }
+
+    if (millis()-pre_time >= 1000)
+    {
+      logPrintf("[E_] wm8904 Start-Up Timeout\n");
+      ret = false;
+      break;
+    }
+  }
+
+  if (ret)
+  {
+    ret &= wm8904WriteReg(0x15, 0x0C02); // 16Khz  - Sample Rate :  
+    ret &= wm8904WriteReg(0x19, 0x0002); // 16bits - Word Length
+    ret &= wm8904WriteReg(0x21, 0x0000); // DAC Mute Off
+  }
 
   return ret;
 }
